@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RLBS Esports League Players</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="RLBS Esports League Logo">
+    </div>
+    <h1>RLBS Esports League</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li class="active"><a href="stats.html">Stats</a></li>
+        <li><a href="twitch.html">Twitch</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="team-stats">
+      <h2>Team Stats</h2>
+      <table id="team-stats-table">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Average KDA</th>
+            <th>Total Kills</th>
+            <th>Total Deaths</th>
+            <th>Total Assists</th>
+            <th>Total CS (Creep Score)</th>
+          </tr>
+        </thead>
+        <tbody id="team-stats-body">
+          <!-- Table body will be dynamically filled by JavaScript -->
+        </tbody>
+      </table>
+    </section>
+    <section id="players">
+      <h2>Player Stats</h2>
+      <table id="player-table">
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Team</th>
+            <th>KDA</th>
+            <th>Kills</th>
+            <th>Deaths</th>
+            <th>Assists</th>
+            <th>CS (Creep Score)</th>
+          </tr>
+        </thead>
+        <tbody id="player-table-body">
+          <!-- Table body will be dynamically filled by JavaScript -->
+        </tbody>
+      </table>
+    </section> 
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>

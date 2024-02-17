@@ -181,7 +181,81 @@ body {
   .team {
     grid-column: 1; /* First column */
   }
+
+  .team-Dr-Mundo’s-Maulers { background-color: #f9cccc; } /* Light Red */
+  .team-Renekton’s-Rampage { background-color: #ccf9cc; } /* Light Green */
+  .team-Zilean’s-Zodiac-Warriors { background-color: #cce5ff; } /* Light Blue */
+  .team-Tristana’s-Terror { background-color: #fffee6; } /* Light Yellow */
+  .team-Amumu’s-Avengers { background-color: #e6e6ff; } /* Light Purple */
+  .team-Warwick’s-Warpath { background-color: #fff3cc; } /* Light Orange */
+  .team-Kog’maw’s-Killers { background-color: #ffcc99; } /* Light Apricot */
+  .team-Cho’gath-Champions { background-color: #e6ffcc; } /* Light Mint */
   
   .record {
     grid-column: 2; /* Second column */
+  }
+
+  #players {
+    margin-top: 20px;
+  }
+  
+  #players h2 {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #player-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #player-table th,
+  #player-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #player-table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  #player-table tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  #player-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  #team-stats {
+    margin-top: 20px;
+  }
+  
+  #team-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  #team-stats-table th,
+  #team-stats-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #dddddd;
+  }
+  
+  #team-stats-table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  #team-stats-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  #team-stats-table tbody tr:hover {
+    background-color: #ddd;
   }

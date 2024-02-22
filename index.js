@@ -1,11 +1,4 @@
-  document.querySelectorAll('.team-dropdown').forEach(item => {
-    item.addEventListener('click', event => {
-      const teamCard = event.target.closest('.team-card');
-      teamCard.classList.toggle('active');
-    });
-  });
-
-  // Sample player data
+  // PLAYER DATA
   const playersData = [
     { name: "Dr. Mundo", team: "Dr Mundo’s Maulers", kda: "0", kills: 0, deaths: 0, assists: 0, cs: 0 },
     { name: "Brand", team: "Dr Mundo’s Maulers", kda: "0", kills: 0, deaths: 0, assists: 0, cs: 0 },
@@ -39,8 +32,56 @@
     { name: "Ezreal", team: "Cho’gath Champions", kda: "0", kills: 0, deaths: 0, assists: 0, cs: 0 },
     { name: "Leona", team: "Cho’gath Champions", kda: "0", kills: 0, deaths: 0, assists: 0, cs: 0 },
     { name: "Master Yi", team: "Cho’gath Champions", kda: "0", kills: 0, deaths: 0, assists: 0, cs: 0 }
-    // Add more player data as needed
   ];
+
+  // GAME DATA
+  /*
+    Teams: 
+      Amumu’s Avengers
+      Cho’gath Champions
+      Dr Mundo’s Maulers
+      Kog’maw’s Killers
+      Renekton’s Rampage
+      Tristana’s Terror
+      Warwick’s Warpath
+      Zilean’s Zodiac Warriors
+
+    Format:
+      "February 28th G1": { winner: "Dr Mundo’s Maulers", loser: "Renekton’s Rampage" },
+  */
+  const gameData = {
+  }
+
+  // TEAM DATA
+  var teamData = {
+    "Amumu’s Avengers": { wins: 0, losses: 0, captain: "Amumu", player1: "Blitzcrank", player2: "Jax", player3: "Kayle", nextMatch: "Warwick’s Warpath", nextMatchDate: "February 28th" },
+    "Cho’gath Champions": { wins: 0, losses: 0, captain: "Cho’gath", player1: "Ezreal", player2: "Leona", player3: "Master Yi", nextMatch: "Kog’maw’s Killers", nextMatchDate: "February 28th" },
+    "Dr Mundo’s Maulers": { wins: 0, losses: 0, captain: "Dr. Mundo", player1: "Brand", player2: "Soraka", player3: "Ashe", nextMatch: "Renekton’s Rampage", nextMatchDate: "February 28th" },
+    "Kog’maw’s Killers": { wins: 0, losses: 0, captain: "Kog’maw", player1: "Karthus", player2: "Ziggs", player3: "Shen", nextMatch: "Cho’gath Champions", nextMatchDate: "February 28th" },
+    "Renekton’s Rampage": { wins: 0, losses: 0, captain: "Renekton", player1: "Galio", player2: "Miss Fortune", player3: "Sivir", nextMatch: "Dr. Mundo’s Maulers", nextMatchDate: "February 28th" },
+    "Tristana’s Terror": { wins: 0, losses: 0, captain: "Tristana", player1: "Garen", player2: "Lux", player3: "Caitlyn", nextMatch: "Zilean's Zodiac Warriors", nextMatchDate: "February 28th" },
+    "Warwick’s Warpath": { wins: 0, losses: 0, captain: "Warwick", player1: "Annie", player2: "Veigar", player3: "Wukong", nextMatch: "Amumu’s Avengers", nextMatchDate: "February 28th" },
+    "Zilean’s Zodiac Warriors": { wins: 0, losses: 0, captain: "Zilean", player1: "Cassiopeia", player2: "Malphite", player3: "Trundle", nextMatch: "Tristana’s Terror", nextMatchDate: "February 28th" }
+  };
+
+  function calculateTeamData() {
+    var winner = "";
+    var loser = "";
+    for (var key in gameData) {
+        if (gameData.hasOwnProperty(key)) {
+            winner = gameData[key].winner;
+            loser = gameData[key].loser;
+
+            if (teamData.hasOwnProperty(winner)) {              
+              teamData[winner].wins++;
+            }
+
+            if (teamData.hasOwnProperty(loser)) {              
+              teamData[loser].losses++;
+            }
+        }
+    }
+  }
 
 // Function to populate the table with player data
 function populatePlayerTable() {
@@ -69,25 +110,12 @@ function populatePlayerTable() {
       <td>${player.assists}</td>
       <td>${player.cs}</td>
     `;
-
-    tableBody.appendChild(row);
+    
+    if(tableBody != null) {
+      tableBody.appendChild(row);
+    }
   });
 }
-
-// Call the function to populate the table
-populatePlayerTable();
-
-// Sample team data with wins and losses
-const teamData = {
-  "Dr Mundo’s Maulers": { wins: 0, losses: 0 },
-  "Renekton’s Rampage": { wins: 0, losses: 0 },
-  "Zilean’s Zodiac Warriors": { wins: 0, losses: 0 },
-  "Tristana’s Terror": { wins: 0, losses: 0 },
-  "Amumu’s Avengers": { wins: 0, losses: 0 },
-  "Warwick’s Warpath": { wins: 0, losses: 0 },
-  "Kog’maw’s Killers": { wins: 0, losses: 0 },
-  "Cho’gath Champions": { wins: 0, losses: 0 }
-};
 
 // Function to calculate team stats
 function calculateAndSortTeamStats() {
@@ -131,21 +159,112 @@ function calculateAndSortTeamStats() {
 
   // Create and populate the table
   const tableBody = document.getElementById("team-stats-body");
-  sortedTeams.forEach(({ team, wins, losses, avgKda, kills, deaths, assists, cs }) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-    <td class="team-${team.replace(/\s+/g, '-')}">${team}</td>
-      <td>${wins}</td>
-      <td>${losses}</td>
-      <td>${avgKda.toFixed(2)}</td>
-      <td>${kills}</td>
-      <td>${deaths}</td>
-      <td>${assists}</td>
-      <td>${cs}</td>
-    `;
-    tableBody.appendChild(row);
-  });
+
+  if(tableBody != null) {
+    sortedTeams.forEach(({ team, wins, losses, avgKda, kills, deaths, assists, cs }) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+      <td class="team-${team.replace(/\s+/g, '-')}">${team}</td>
+        <td>${wins}</td>
+        <td>${losses}</td>
+        <td>${avgKda.toFixed(2)}</td>
+        <td>${kills}</td>
+        <td>${deaths}</td>
+        <td>${assists}</td>
+        <td>${cs}</td>
+      `;
+        tableBody.appendChild(row);
+    });
+  }
+
+  // Create and populate the teams tab table
+  const teamsTableBody = document.getElementById("team-standings-body");
+
+  if(teamsTableBody != null) {
+    var teams = `<div class="header-team">Team</div>
+                 <div class="header-record">Record</div>`
+    var i = 0;
+    sortedTeams.forEach(({ team, wins, losses }) => {
+      i++;
+      teams += `
+      <div class="team"><span class="num">${i}.</span> ${team}</div>
+      <div class="record">${wins}-${losses}</div>
+      `;
+    });
+
+    teamsTableBody.innerHTML = teams;
+  }
 }
 
-// Call the function to calculate, sort, and populate team stats
+// Function to populate the team cards
+function populateTeamCards() {
+  const tableBody = document.getElementById("team-cards");
+
+  var teams = Object.keys(teamData);
+  var teamStats;
+  var teamInnerHtml = "";
+  var previousGames = "";
+
+  if(tableBody != null) {
+    teams.forEach((team) => {
+      teamStats = teamData[team];
+      previousGames = "";
+
+      for (var key in gameData) {
+        if (gameData.hasOwnProperty(key)) {
+            winner = gameData[key].winner;
+            loser = gameData[key].loser;
+
+            if (team === winner) {
+              previousGames += `
+              <p style="padding-left: 20px">Beat ${loser} on ${key.substring(0, key.length-3)}</p>`;
+            }
+
+            if (team === loser) {
+              previousGames += `
+              <p style="padding-left: 20px">Lost to ${winner} on ${key.substring(0, key.length-3)}</p>`;
+            }
+        }
+      }
+
+      if (previousGames !== "") {
+        previousGames = `<p style="padding-top: 10px">Game History:</p>` + previousGames;
+      }
+
+      teamInnerHtml += `
+        <div class="team-card">
+          <button class="team-dropdown">${team}</button>
+          <div class="team-info">
+            <p>Record: ${teamStats.wins}-${teamStats.losses}</p>
+            <p>Captain: ${teamStats.captain}</p>
+            <p>Players:</p>
+            <ul>
+              <li>${teamStats.player1}</li>
+              <li>${teamStats.player2}</li>
+              <li>${teamStats.player3}</li>
+            </ul>
+            <p>Next Game:</p>
+            <p style="padding-left: 20px">${teamStats.nextMatch} on ${teamStats.nextMatchDate}, 2024</p>
+            ${previousGames}
+          </div>
+        </div>
+        `;
+    });
+        
+    tableBody.innerHTML = teamInnerHtml;
+  }
+}
+
+// Calling functions 
+calculateTeamData();
+populateTeamCards();
+populatePlayerTable();
 calculateAndSortTeamStats();
+
+
+document.querySelectorAll('.team-dropdown').forEach(item => {
+    item.addEventListener('click', event => {
+      const teamCard = event.target.closest('.team-card');
+      teamCard.classList.toggle('active');
+    });
+  });

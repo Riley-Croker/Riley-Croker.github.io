@@ -102,6 +102,18 @@ body {
     }
   }
 
+  .winner {
+    color: green;
+    font-weight: bolder;
+  }
+
+  .day-completed {
+      font-weight: bold;
+      margin-top: 10px;
+      margin-left: 18px;
+      color: maroon;
+  }
+
   .num {
     color: #007bff;
     font-weight: bold;
@@ -135,6 +147,7 @@ body {
     background-color: #f5f5f5;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
   }
   
   .team-info p {

@@ -6,7 +6,7 @@
     { name: "Soraka", team: "Dr Mundo’s Maulers", kda: "2.15", kills: 2, deaths: 20, assists: 41, cs: 193 },
     { name: "Renekton", team: "Renekton’s Rampage", kda: "0.47", kills: 2, deaths: 15, assists: 5, cs: 230 },
     { name: "Galio", team: "Renekton’s Rampage", kda: "0.93", kills: 8, deaths: 15, assists: 6, cs: 295 },
-    { name: "Miss Fortune", team: "Renekton’s Rampage", kda: "0.4", kills: 20, deaths: 14, assists: 0, cs: 266 },
+    { name: "Miss Fortune", team: "Renekton’s Rampage", kda: "0.4", kills: 8, deaths: 20, assists: 0, cs: 266 },
     { name: "Sivir", team: "Renekton’s Rampage", kda: "0.71", kills: 11, deaths: 24, assists: 6, cs: 438 },
     { name: "Tristana", team: "Tristana’s Terror", kda: "1.5", kills: 5, deaths: 16, assists: 19, cs: 206 },
     { name: "Garen", team: "Tristana’s Terror", kda: "2.92", kills: 20, deaths: 12, assists: 15, cs: 264 },
